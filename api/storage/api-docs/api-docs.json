@@ -1,0 +1,912 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Oliveiras",
+        "license": {
+            "name": "MIT"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "API server"
+        }
+    ],
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Registrar um usuário do sistema",
+                "operationId": "register",
+                "requestBody": {
+                    "description": "Registrar usuário",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterViewModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "erro do servidor"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "description": "Realizar o login de um usuário do sistema",
+                "operationId": "login",
+                "requestBody": {
+                    "description": "Login ao sistema",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginViewModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/comentario/galeria/obter-todos": {
+            "get": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Resgatar a lista de todos comentarios.",
+                "description": "Resgatar a lista de todos as galerias",
+                "operationId": "obterTodos",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/comentario/galeria/obter-por-id/{id}": {
+            "get": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Resgatar a galeria por Id.",
+                "description": "Resgatar a lista de todos as galerias",
+                "operationId": "obterPorId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da galeria",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/comentario/galeria/cadastrar": {
+            "post": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Cadastrar Galeria",
+                "description": "Registrar galeria",
+                "operationId": "cadastrar",
+                "requestBody": {
+                    "description": "Registrar galeria",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Galeria"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/comentario/galeria/alterar": {
+            "put": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Alterar Galeria",
+                "description": "Alterar Galeria",
+                "operationId": "alterar",
+                "requestBody": {
+                    "description": "Alterar Galeria",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Galeria"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/comentario/galeria/deletar/{id}": {
+            "delete": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Excluir Galeria",
+                "description": "Deletar Galeria",
+                "operationId": "deletar",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da galeria",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/comentario/fotos/obter-todos": {
+            "get": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Resgatar a lista de todos comentarios.",
+                "description": "Resgatar a lista de todos as fotos",
+                "operationId": "obterTodasFotos",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/comentario/fotos/obter-por-id/{id}": {
+            "get": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Resgatar a galeria por Id.",
+                "description": "Resgatar a lista de todos as fotos",
+                "operationId": "obterPorFotosId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da fotos",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/comentario/fotos/cadastrar": {
+            "post": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Cadastrar Galeria",
+                "description": "Registrar fotos",
+                "operationId": "cadastrarFotos",
+                "requestBody": {
+                    "description": "Registrar galeria",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Galeria"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/comentario/fotos/alterar": {
+            "put": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Alterar Galeria",
+                "description": "Alterar fotos",
+                "operationId": "alterarFotos",
+                "requestBody": {
+                    "description": "Alterar fotos",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Galeria"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/comentario/fotos/deletar/{id}": {
+            "delete": {
+                "tags": [
+                    "Comentario"
+                ],
+                "summary": "Excluir Galeria",
+                "description": "Deletar Galeria",
+                "operationId": "deletarFotos",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da fotos",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fotos/obter-todos": {
+            "get": {
+                "tags": [
+                    "Fotos"
+                ],
+                "summary": "Resgatar a lista de todos as galerias.",
+                "description": "Resgatar a lista de todos as fotos",
+                "operationId": "obterTodos",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fotos/obter-por-id/{id}": {
+            "get": {
+                "tags": [
+                    "Fotos"
+                ],
+                "summary": "Resgatar Fotos por Id.",
+                "description": "Resgatar a foto por id",
+                "operationId": "obterPorId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da foto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fotos/obter-por-galeria/{id}": {
+            "get": {
+                "tags": [
+                    "Fotos"
+                ],
+                "summary": "Resgatar Fotos por Galeria.",
+                "description": "Resgatar a lista de todos as fotos por galeria",
+                "operationId": "obterPorGaleria",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da foto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fotos/cadastrar": {
+            "post": {
+                "tags": [
+                    "Fotos"
+                ],
+                "summary": "Cadastrar Foto",
+                "description": "Registrar foto",
+                "operationId": "cadastrar",
+                "requestBody": {
+                    "description": "Registrar foto",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Fotos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/fotos/alterar": {
+            "put": {
+                "tags": [
+                    "Fotos"
+                ],
+                "summary": "Alterar Fotos",
+                "description": "Alterar Fotos",
+                "operationId": "alterar",
+                "requestBody": {
+                    "description": "Alterar Fotos",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Fotos"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/fotos/deletar/{id}": {
+            "delete": {
+                "tags": [
+                    "Fotos"
+                ],
+                "summary": "Excluir Fotos",
+                "description": "Deletar Fotos",
+                "operationId": "deletar",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da Foto",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/galeria/obter-todos": {
+            "get": {
+                "tags": [
+                    "Galeria"
+                ],
+                "summary": "Resgatar a lista de todos as galerias.",
+                "description": "Resgatar a lista de todos as galerias",
+                "operationId": "obterTodos",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/galeria/obter-por-id/{id}": {
+            "get": {
+                "tags": [
+                    "Galeria"
+                ],
+                "summary": "Resgatar a galeria por Id.",
+                "description": "Resgatar a lista de todos as galerias",
+                "operationId": "obterPorId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da galeria",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/galeria/cadastrar": {
+            "post": {
+                "tags": [
+                    "Galeria"
+                ],
+                "summary": "Cadastrar Galeria",
+                "description": "Registrar galeria",
+                "operationId": "cadastrar",
+                "requestBody": {
+                    "description": "Registrar galeria",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Galeria"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/galeria/alterar": {
+            "put": {
+                "tags": [
+                    "Galeria"
+                ],
+                "summary": "Alterar Galeria",
+                "description": "Alterar Galeria",
+                "operationId": "alterar",
+                "requestBody": {
+                    "description": "Alterar Galeria",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Galeria"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/galeria/deletar/{id}": {
+            "delete": {
+                "tags": [
+                    "Galeria"
+                ],
+                "summary": "Excluir Galeria",
+                "description": "Deletar Galeria",
+                "operationId": "deletar",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da galeria",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Resgatar as informações do usuário logado.",
+                "description": "Informações do usuário",
+                "operationId": "profile",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/usuarios/obter-todos": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Obter todos os usuários",
+                "description": "Obter a lista de todos os usuários",
+                "operationId": "obterTodos",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/usuarios/obter-por-id/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Obter o usuário por id.",
+                "description": "Informações do usuário selecionado",
+                "operationId": "obterPorId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Fotos": {
+                "title": "Fotos",
+                "description": "Class Fotos",
+                "required": [
+                    "GaleriaId",
+                    "Nome",
+                    "Descricao",
+                    "Diretorio"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "GaleriaId": {
+                        "type": "integer"
+                    },
+                    "Nome": {
+                        "type": "string"
+                    },
+                    "Descricao": {
+                        "type": "string"
+                    },
+                    "Diretorio": {
+                        "type": "string"
+                    },
+                    "UserId": {
+                        "type": "integer"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "update_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "FotosComentario": {
+                "title": "FotosComentario",
+                "description": "Class FotosComentario",
+                "required": [
+                    "FotosId",
+                    "Descricao"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "FotosId": {
+                        "type": "integer"
+                    },
+                    "Descricao": {
+                        "type": "string"
+                    },
+                    "UserId": {
+                        "type": "integer"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "update_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Galeria": {
+                "title": "Galeria",
+                "description": "Class Galeria",
+                "required": [
+                    "Nome",
+                    "Data",
+                    "Descricao"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "Nome": {
+                        "type": "string"
+                    },
+                    "Data": {
+                        "type": "string"
+                    },
+                    "Descricao": {
+                        "type": "string"
+                    },
+                    "UserId": {
+                        "type": "integer"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "update_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "GaleriaComentario": {
+                "title": "GaleriaComentario",
+                "description": "Class GaleriaComentario",
+                "required": [
+                    "GaleriaId",
+                    "Descricao"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "GaleriaId": {
+                        "type": "integer"
+                    },
+                    "Descricao": {
+                        "type": "string"
+                    },
+                    "UserId": {
+                        "type": "integer"
+                    },
+                    "Status": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "update_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "title": "User",
+                "description": "Class User",
+                "required": [
+                    "name",
+                    "email"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "LoginViewModel": {
+                "title": "LoginViewModel",
+                "description": "Class LoginViewModel",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "RegisterViewModel": {
+                "title": "RegisterViewModel",
+                "description": "Class RegisterViewModel",
+                "required": [
+                    "name",
+                    "email",
+                    "password",
+                    "password_confirmation"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "password_confirmation": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
